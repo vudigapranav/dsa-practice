@@ -1,18 +1,18 @@
 class Solution {
 public:
     vector<bool> kidsWithCandies(vector<int>& candies, int extraCandies) {
-        vector<bool> result;
-
+        int max_candies = *max_element(candies.begin(), candies.end());
+        
+        vector<bool> result(candies.size());
+        
         for (int i = 0; i < candies.size(); i++) {
-            int temp = candies[i] + extraCandies;
-            bool isHighest = true;
-
-            // TODO: Compare temp against each original candy count.
-            // Set isHighest to false if you find a larger count.
-
-            result.push_back(isHighest);
+            if (candies[i] + extraCandies >= max_candies) {
+                result[i] = true;
+            } else {
+                result[i] = false;
+            }
         }
-
+        
         return result;
     }
 };
